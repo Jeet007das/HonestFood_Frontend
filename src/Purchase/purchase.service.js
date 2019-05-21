@@ -1,5 +1,4 @@
 const db = require('../common/db');
-const Book = db.Book;
 const Store = db.Store; 
 const Purchase = db.Purchase;
 let addressValidator = require('address-validator');
@@ -71,9 +70,11 @@ module.exports = {
             }else{
                 let deliverUpto = storeObj.deliverUpto;
                 let result = await calcCrow(storeObj.latitude, storeObj.longitude, customerDetails.latitude, customerDetails.longitude);
-                result.then(res =>{
+                result.then(async (res) =>{
                     if(res <= deliverUpto){
-                        return (null, "Delivery successfully")
+                        let purchase_details = new Purchase(customerDetails);
+                        let res = await purchase_details.save();
+                        return (null, "Delivery successfully"+res);
                     }else{
                         return("Out of range delivery", null)
                     }

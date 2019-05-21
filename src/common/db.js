@@ -12,8 +12,6 @@ mongoose.connect('mongodb+srv://jeet:Abc@123@cluster0-hs0jx.mongodb.net/test?ret
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    User: require('../Users/user.model'),
-    Book: require('../Books/book.model'),
-    Purchase: require('../Purchase/purchase.model'),
-    Store:require('../StoreRegister/register.model')
+   Store:require('../StoreRegister/register.model'),
+    Purchase:require('../Purchase/purchase.model')
 };

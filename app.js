@@ -23,8 +23,6 @@ app.use(cors());
 app.use(jwt())
 
 //bind controllers
-app.use('/users', require('./src/Users/user.controller'));
-app.use('/books', require('./src/Books/book.controller'));
 app.use('/purchase', require('./src/Purchase/purchase.controller'));
 app.use('/register', require('./src/StoreRegister/register.controller'));
 
